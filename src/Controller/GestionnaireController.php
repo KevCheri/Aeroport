@@ -2,9 +2,14 @@
 
 namespace App\Controller;
 
+use FOS\UserBundle\Controller\RegistrationController;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use FOS\UserBundle\Controller\RegistrationController as BaseController;
+
 
 class GestionnaireController extends AbstractController
 {
@@ -20,8 +25,18 @@ class GestionnaireController extends AbstractController
 
     public function newVol()
     {
+
         $this->render('gestionnaire/vol.html.twig', [
             'controller_name' => 'GestionnaireController']);
+
+    }
+    /**
+     * @Route("/gestionnaireAccount", name="gestionnaireAccount")
+     */
+    public function createAccount(Request $request): Response
+    {
+        $registration = new RegistrationController();
+        return $registration->registerAction($request);
 
     }
 }

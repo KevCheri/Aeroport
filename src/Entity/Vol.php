@@ -187,6 +187,10 @@ class Vol
         return $this;
     }
 
+    /**
+     * @param Passager $passager
+     * @return Vol
+     */
     public function removePassager(Passager $passager): self
     {
         if ($this->passagers->contains($passager)) {

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Vol;
 use App\Form\VolType;
 use App\Repository\VolRepository;
+use App\Repository\PassagerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +22,32 @@ class VolController extends AbstractController
     public function index(VolRepository $volRepository): Response
     {
         return $this->render('vol/index.html.twig', [
+            'vols' => $volRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/indexPassager", name="vol_indexpassager", methods={"GET"})
+     */
+    public function indexpPassager(VolRepository $volRepository): Response
+    {
+        return $this->render('vol/indexPassager.html.twig', [
+            'vols' => $volRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/indexPassagerConfirm", name="vol_indexPassagerConfirm", methods={"GET"})
+     */
+    public function affectationPassager(PassagerRepository $passagerRepository, VolRepository $volRepository, Request $request): Response
+    {
+        $vol = $volRepository->find($request->query->get('vol_id'));
+        $passager = $passagerRepository->find(1);
+        $entityManager = $this->getDoctrine()->getManager();
+        $passagerRepository->addPassager($passager);
+        $entityManager->persist($vol);
+        $entityManager->flush();
+        return $this->render('vol/indexPassagerConfirm.html.twig', [
             'vols' => $volRepository->findAll(),
         ]);
     }
@@ -93,4 +120,5 @@ class VolController extends AbstractController
 
         return $this->redirectToRoute('vol_index');
     }
+
 }

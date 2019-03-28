@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vol index{% endblock %}
+
+{% block body %}
+    <h1>Vol index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateDepart</th>
+                <th>DateArrivee</th>
+                <th>VilleDepart</th>
+                <th>VilleArrivee</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vol in vols %}
+            <tr>
+                <td>{{ vol.id }}</td>
+                <td>{{ vol.DateDepart ? vol.DateDepart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ vol.DateArrivee ? vol.DateArrivee|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ vol.VilleDepart }}</td>
+                <td>{{ vol.VilleArrivee }}</td>
+                <td>
+                    <a href="{{ path('vol_indexPassagerConfirm', {vol_id: vol.id}) }}">Reserver </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
