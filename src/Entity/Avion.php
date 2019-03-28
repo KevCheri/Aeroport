@@ -43,6 +43,10 @@ class Avion
         $this->vols = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->modele;
+    }
     public function getId(): ?int
     {
         return $this->id;

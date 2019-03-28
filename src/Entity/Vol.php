@@ -39,7 +39,7 @@ class Vol
     private $VilleArrivee;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\gestionnaire", inversedBy="vols")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Gestionnaire", inversedBy="vols")
      */
     private $gestionnaire;
 
