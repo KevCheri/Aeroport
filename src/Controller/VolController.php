@@ -18,6 +18,8 @@ class VolController extends AbstractController
 {
     /**
      * @Route("/", name="vol_index", methods={"GET"})
+     * @param VolRepository $volRepository
+     * @return Response
      */
     public function index(VolRepository $volRepository): Response
     {
@@ -28,6 +30,8 @@ class VolController extends AbstractController
 
     /**
      * @Route("/indexPassager", name="vol_indexpassager", methods={"GET"})
+     * @param VolRepository $volRepository
+     * @return Response
      */
     public function indexpPassager(VolRepository $volRepository): Response
     {
@@ -37,14 +41,18 @@ class VolController extends AbstractController
     }
 
     /**
-     * @Route("/indexPassagerConfirm", name="vol_indexPassagerConfirm", methods={"GET"})
+     * @Route("/indexPassagerConfirm/{id}", name="vol_indexPassagerConfirm", methods={"GET"})
+     * @param Vol $vol
+     * @param PassagerRepository $passagerRepository
+     * @param VolRepository $volRepository
+     * @param Request $request
+     * @return Response
      */
-    public function affectationPassager(PassagerRepository $passagerRepository, VolRepository $volRepository, Request $request): Response
+    public function affectationPassager(Vol $vol, PassagerRepository $passagerRepository, VolRepository $volRepository): Response
     {
-        $vol = $volRepository->find($request->query->get('vol_id'));
         $passager = $passagerRepository->find(1);
         $entityManager = $this->getDoctrine()->getManager();
-        $passagerRepository->addPassager($passager);
+        $vol->addPassager($passager);
         $entityManager->persist($vol);
         $entityManager->flush();
         return $this->render('vol/indexPassagerConfirm.html.twig', [
