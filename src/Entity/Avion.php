@@ -34,7 +34,7 @@ class Avion
     private $compagnie;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\vol", mappedBy="avion")
+     * @ORM\OneToMany(targetEntity="App\Entity\Vol", mappedBy="avion")
      */
     private $vols;
 

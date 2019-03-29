@@ -25,8 +25,8 @@
                 <td>{{ vol.VilleDepart }}</td>
                 <td>{{ vol.VilleArrivee }}</td>
                 <td>
-                    <a href="{{ path('vol_show', {'id': vol.id}) }}">show</a>
-                    <a href="{{ path('vol_edit', {'id': vol.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('vol_show', {'id': vol.id}) }}">show</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('vol_edit', {'id': vol.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

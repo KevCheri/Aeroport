@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Passager;
+use App\Entity\Pilote;
+use App\Entity\Avion;
 use App\Entity\Vol;
 use App\Form\VolType;
 use App\Repository\VolRepository;
 use App\Repository\PassagerRepository;
+use App\Repository\PiloteRepository;
+use App\Repository\AvionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +50,6 @@ class VolController extends AbstractController
      * @param Vol $vol
      * @param PassagerRepository $passagerRepository
      * @param VolRepository $volRepository
-     * @param Request $request
      * @return Response
      */
     public function affectationPassager(Vol $vol, PassagerRepository $passagerRepository, VolRepository $volRepository): Response
@@ -61,7 +65,76 @@ class VolController extends AbstractController
     }
 
     /**
+     * @Route("/listingvolPassager", name="vol_listingvolPassager", methods={"GET"})
+     * @return Response
+     */
+    public function listingvolPassager():Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $passager = $em->getRepository(Passager::class)->find(1);
+        return $this->render('vol/listingvolPassager.html.twig',[
+            'passager' => $passager
+        ]);
+
+    }
+
+    /**
+     * @Route("/listingvolPilote", name="vol_listingvolPilote", methods={"GET"})
+     * @return Response
+     */
+    public function listingvolPilote():Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $pilote = $em->getRepository(Pilote::class)->find(1);
+        return $this->render('vol/listingvolPilote.html.twig',[
+            'pilote' => $pilote
+        ]);
+    }
+
+    /**
+     * @Route("/listingvoldepartResponsable", name="vol_listingvoldepartResponsable", methods={"GET"})
+     * @return Response
+     */
+    public function listingvoldepartResponsable():Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $vols = $em->getRepository(Vol::class)->findAll();
+        return $this->render('vol/listingvoldepartResponsable.html.twig',[
+            'vols' => $vols
+        ]);
+    }
+
+    /**
+     * @Route("/listingvolAvion", name="vol_listingvolAvion", methods={"GET"})
+     * @return Response
+     */
+    public function listingvolAvion():Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $avions = $em->getRepository(Avion::class)->findAll();
+        return $this->render('vol/listingvolAvion.html.twig',[
+            'avions' => $avions
+        ]);
+    }
+
+    /**
+     * @Route("/listingVolparavion", name="vol_listingVolparavion", methods={"GET"})
+     * @return Response
+     */
+    public function listingVolparavion(): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $avion = $em->getRepository(Avion::class)->find(1);
+        return $this->render('vol/listingVolparavion.html.twig', [
+            'avion' => $avion,
+        ]);
+    }
+
+
+    /**
      * @Route("/ajout", name="vol_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {

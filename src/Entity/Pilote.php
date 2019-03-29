@@ -29,7 +29,7 @@ class Pilote
     private $prenom;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\vol", mappedBy="pilote")
+     * @ORM\OneToMany(targetEntity="App\Entity\Vol", mappedBy="pilote")
      */
     private $vols;
 

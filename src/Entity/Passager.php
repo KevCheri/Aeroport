@@ -34,7 +34,7 @@ class Passager
     private $pays;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\vol", inversedBy="passagers")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Vol", inversedBy="passagers")
      */
     private $vols;
 
