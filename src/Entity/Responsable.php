@@ -31,6 +31,11 @@ class Responsable
      */
     private $mot_de_passe;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="responsable", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,24 @@ class Responsable
     public function setMotDePasse(string $mot_de_passe): self
     {
         $this->mot_de_passe = $mot_de_passe;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newResponsable = $user === null ? null : $this;
+        if ($newResponsable !== $user->getResponsable()) {
+            $user->setResponsable($newResponsable);
+        }
 
         return $this;
     }

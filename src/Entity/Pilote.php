@@ -33,6 +33,11 @@ class Pilote
      */
     private $vols;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="pilote", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function __construct()
     {
         $this->vols = new ArrayCollection();
@@ -98,6 +103,24 @@ class Pilote
             if ($vol->getPilote() === $this) {
                 $vol->setPilote(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newPilote = $user === null ? null : $this;
+        if ($newPilote !== $user->getPilote()) {
+            $user->setPilote($newPilote);
         }
 
         return $this;

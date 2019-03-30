@@ -38,6 +38,11 @@ class Passager
      */
     private $vols;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="passager", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function __construct()
     {
         $this->vols = new ArrayCollection();
@@ -111,6 +116,18 @@ class Passager
                 $vol->setPassager(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
