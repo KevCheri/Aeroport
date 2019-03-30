@@ -17,6 +17,8 @@ class PiloteController extends AbstractController
 {
     /**
      * @Route("/", name="pilote_index", methods={"GET"})
+     * @param PiloteRepository $piloteRepository
+     * @return Response
      */
     public function index(PiloteRepository $piloteRepository): Response
     {
@@ -27,6 +29,8 @@ class PiloteController extends AbstractController
 
     /**
      * @Route("/new", name="pilote_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +54,8 @@ class PiloteController extends AbstractController
 
     /**
      * @Route("/{id}", name="pilote_show", methods={"GET"})
+     * @param Pilote $pilote
+     * @return Response
      */
     public function show(Pilote $pilote): Response
     {
@@ -60,6 +66,9 @@ class PiloteController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="pilote_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Pilote $pilote
+     * @return Response
      */
     public function edit(Request $request, Pilote $pilote): Response
     {
@@ -82,6 +91,9 @@ class PiloteController extends AbstractController
 
     /**
      * @Route("/{id}", name="pilote_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Pilote $pilote
+     * @return Response
      */
     public function delete(Request $request, Pilote $pilote): Response
     {
