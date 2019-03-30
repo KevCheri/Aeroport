@@ -25,7 +25,7 @@ class User extends BaseUser
     private $passager;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Pilote", inversedBy="gestionnaire", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Pilote", inversedBy="user", cascade={"persist", "remove"})
      */
     private $pilote;
 

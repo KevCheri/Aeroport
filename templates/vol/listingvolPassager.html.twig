@@ -1,3 +1,10 @@
-{% for vol in passager.vols %}
-{{ vol.villeArrivee }}
-{% endfor %}
+ {% block body %}
+<div class="container">
+    {% for vol in passager.vols %}
+        <p>
+            {{ vol.villeArrivee }}
+        </p>
+    {% endfor %}
+</div>
+ {% endblock %}
+
