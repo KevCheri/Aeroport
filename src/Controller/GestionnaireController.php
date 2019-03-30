@@ -33,10 +33,10 @@ class GestionnaireController extends AbstractController
     /**
      * @Route("/gestionnaireAccount", name="gestionnaireAccount")
      */
-    public function createAccount(Request $request): Response
+    /*public function createAccount(Request $request): Response
     {
         $registration = new RegistrationController();
         return $registration->registerAction($request);
 
-    }
+    }*/
 }
