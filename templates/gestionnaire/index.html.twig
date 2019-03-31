@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GestionnaireController!{% endblock %}
+{% block title %}Création Gestionnaire{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Création Gestionnaire </h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Mot_de_passe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gestionnaire in gestionnaires %}
+            <tr>
+                <td>{{ gestionnaire.id }}</td>
+                <td>{{ gestionnaire.nom }}</td>
+                <td>{{ gestionnaire.prenom }}</td>
+                <td>{{ gestionnaire.motDePasse }}</td>
+                <td>
+                    <a href="{{ path('gestionnaire_show', {'id': gestionnaire.id}) }}">Voir</a>
+                    <a href="{{ path('gestionnaire_edit', {'id': gestionnaire.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/kevincherizecote/Documents/Projet USTS/Aeroport/src/Controller/GestionnaireController.php'|file_link(0) }}">src/Controller/GestionnaireController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/kevincherizecote/Documents/Projet USTS/Aeroport/templates/gestionnaire/index.html.twig'|file_link(0) }}">templates/gestionnaire/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('gestionnaire_new') }}">Créer un Gestionnaire</a>
+    <p></p><a href="{{ path('admin') }}">Retour</a></p>
 {% endblock %}

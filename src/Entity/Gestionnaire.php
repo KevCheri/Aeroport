@@ -34,7 +34,7 @@ class Gestionnaire
     private $mot_de_passe;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Vol", mappedBy="gestionnaire")
+     * @ORM\OneToMany(targetEntity="App\Entity\Vol", mappedBy="Gestionnaire")
      */
     private $vols;
 

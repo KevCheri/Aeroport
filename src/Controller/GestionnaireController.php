@@ -2,27 +2,29 @@
 
 namespace App\Controller;
 
-use App\Entity\Gestionnaire;
 use App\Entity\User;
+use App\Entity\Gestionnaire;
 use App\Form\GestionnaireType;
-use FOS\UserBundle\Controller\RegistrationController;
-use Psr\Container\ContainerInterface;
+use App\Repository\GestionnaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
-
+/**
+ * @Route("/gestionnaire")
+ */
 class GestionnaireController extends AbstractController
 {
     /**
-     * @Route("/gestionnaire", name="gestionnaire")
+     * @Route("/gestionnaire", name="gestionnaire", methods={"GET"})
+     * @param GestionnaireRepository $gestionnaireRepository
+     * @return Response
      */
-    public function index()
+    public function index(GestionnaireRepository $gestionnaireRepository): Response
     {
         return $this->render('gestionnaire/index.html.twig', [
-            'controller_name' => 'GestionnaireController',
+            'gestionnaires' => $gestionnaireRepository->findAll(),
         ]);
     }
 
@@ -35,7 +37,7 @@ class GestionnaireController extends AbstractController
     }
 
     /**
-     * @Route("/new_gestionnaire", name="gestionnaire_new", methods={"GET","POST"})
+     * @Route("/new", name="gestionnaire_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
@@ -50,29 +52,73 @@ class GestionnaireController extends AbstractController
             $entityManager->persist($gestionnaire);
             $entityManager->flush();
             $user = new User();
-            $user->setPassword();
+            $user->setPassword("azerty");
             $user->setUsername($gestionnaire->getNom());
             $user->setEmail($gestionnaire)->getEmail();
-            $user->setPilote($gestionnaire);
+            $user->setGestionnaire($gestionnaire);
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('gestionnaire_index');
+            return $this->redirectToRoute('gestionnaire');
         }
 
-        return $this->render('pilote/new.html.twig', [
+        return $this->render('gestionnaire/new.html.twig', [
             'gestionnaire' => $gestionnaire,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/gestionnaireAccount", name="gestionnaireAccount")
+     * @Route("/{id}", name="gestionnaire_show", methods={"GET"})
+     * @param Gestionnaire $gestionnaire
+     * @return Response
      */
-    /*public function createAccount(Request $request): Response
+    public function show(Gestionnaire $gestionnaire): Response
     {
-        $registration = new RegistrationController();
-        return $registration->registerAction($request);
+        return $this->render('gestionnaire/show.html.twig', [
+            'gestionnaire' => $gestionnaire,
+        ]);
+    }
 
-    }*/
+    /**
+     * @Route("/{id}/edit", name="gestionnaire_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Gestionnaire $gestionnaire
+     * @return Response
+     */
+    public function edit(Request $request, Gestionnaire $gestionnaire): Response
+    {
+        $form = $this->createForm(GestionnaireType::class, $gestionnaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('gestionnaire_index', [
+                'id' => $gestionnaire->getId(),
+            ]);
+        }
+
+        return $this->render('gestionnaire/edit.html.twig', [
+            'gestionnaire' => $gestionnaire,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="gestionnaire_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Gestionnaire $gestionnaire
+     * @return Response
+     */
+    public function delete(Request $request, Gestionnaire $gestionnaire): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$gestionnaire->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($gestionnaire);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('gestionnaire_index');
+    }
 }
