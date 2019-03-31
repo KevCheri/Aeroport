@@ -38,6 +38,11 @@ class Pilote
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
     public function __construct()
     {
         $this->vols = new ArrayCollection();
@@ -122,6 +127,18 @@ class Pilote
         if ($newPilote !== $user->getPilote()) {
             $user->setPilote($newPilote);
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

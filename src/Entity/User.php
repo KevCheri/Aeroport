@@ -42,7 +42,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->addRole('ROLE_PASSAGER');
+
     }
 
     public function getPassager(): ?Passager

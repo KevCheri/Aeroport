@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('passager_index') }}">back to list</a>
+    <a href="{{ path('passager_index') }}">Retour</a>
 
-    <a href="{{ path('passager_edit', {'id': passager.id}) }}">edit</a>
+    <a href="{{ path('passager_edit', {'id': passager.id}) }}">Modifier</a>
 
     {{ include('passager/_delete_form.html.twig') }}
 {% endblock %}

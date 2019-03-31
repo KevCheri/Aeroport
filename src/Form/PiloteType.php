@@ -14,9 +14,11 @@ class PiloteType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('user')
+            ->add('email')
         ;
+
     }
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

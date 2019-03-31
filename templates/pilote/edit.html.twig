@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Pilote{% endblock %}
+{% block title %}Modifier pilote{% endblock %}
 
 {% block body %}
-    <h1>Edit Pilote</h1>
+    <h1>Modifier Pilote</h1>
 
-    {{ include('pilote/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('pilote/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
-    <a href="{{ path('pilote_index') }}">back to list</a>
+    <a href="{{ path('pilote_index') }}">Retour</a>
 
     {{ include('pilote/_delete_form.html.twig') }}
 {% endblock %}

@@ -23,17 +23,17 @@
                 <td>{{ passager.prenom }}</td>
                 <td>{{ passager.pays }}</td>
                 <td>
-                    <a href="{{ path('passager_show', {'id': passager.id}) }}">show</a>
-                    <a href="{{ path('passager_edit', {'id': passager.id}) }}">edit</a>
+                    <a href="{{ path('passager_show', {'id': passager.id}) }}">Voir</a>
+                    <a href="{{ path('passager_edit', {'id': passager.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('passager_new') }}">Create new</a>
+    <a href="{{ path('passager_new') }}">Creer</a>
 {% endblock %}

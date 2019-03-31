@@ -21,17 +21,17 @@
                 <td>{{ pilote.nom }}</td>
                 <td>{{ pilote.prenom }}</td>
                 <td>
-                    <a href="{{ path('pilote_show', {'id': pilote.id}) }}">show</a>
-                    <a href="{{ path('pilote_edit', {'id': pilote.id}) }}">edit</a>
+                    <a href="{{ path('pilote_show', {'id': pilote.id}) }}">Voir </a>
+                    <a href="{{ path('pilote_edit', {'id': pilote.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('pilote_new') }}">Create new</a>
+    <a href="{{ path('pilote_new') }}">Créer un nouveau pilote</a>
 {% endblock %}

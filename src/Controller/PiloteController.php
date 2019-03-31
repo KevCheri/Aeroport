@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Pilote;
+use App\Entity\User;
 use App\Form\PiloteType;
 use App\Repository\PiloteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,6 +42,13 @@ class PiloteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($pilote);
+            $entityManager->flush();
+            $user = new User();
+            $user->setPassword();
+            $user->setUsername($pilote->getNom());
+            $user->setEmail($pilote)->getEmail();
+            $user->setPilote($pilote);
+            $entityManager->persist($user);
             $entityManager->flush();
 
             return $this->redirectToRoute('pilote_index');
