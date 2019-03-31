@@ -33,6 +33,7 @@ class PiloteController extends AbstractController
      * @param Request $request
      * @return Response
      */
+
     public function new(Request $request): Response
     {
         $pilote = new Pilote();
@@ -44,7 +45,7 @@ class PiloteController extends AbstractController
             $entityManager->persist($pilote);
             $entityManager->flush();
             $user = new User();
-            $user->setPassword();
+            $user->setPassword("azerty");
             $user->setUsername($pilote->getNom());
             $user->setEmail($pilote)->getEmail();
             $user->setPilote($pilote);

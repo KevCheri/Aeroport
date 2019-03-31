@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Responsable;
 use App\Form\ResponsableType;
 use App\Repository\ResponsableRepository;
@@ -37,6 +38,13 @@ class ResponsableController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($responsable);
+            $entityManager->flush();
+            $user = new User();
+            $user->setPassword("azerty");
+            $user->setUsername($responsable->getNom());
+            $user->setEmail($responsable->getEmail());
+            $user->setResponsable($responsable);
+            $entityManager->persist($user);
             $entityManager->flush();
 
             return $this->redirectToRoute('responsable_index');

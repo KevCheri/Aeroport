@@ -14,7 +14,7 @@ class GestionnaireType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('mot_de_passe')
+            ->add('email')
 
         ;
     }

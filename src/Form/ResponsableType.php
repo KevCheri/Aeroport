@@ -14,8 +14,8 @@ class ResponsableType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('mot_de_passe')
-            ->add('user')
+            ->add('email')
+
         ;
     }
 

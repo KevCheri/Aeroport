@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Mot_de_passe</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +20,6 @@
                 <td>{{ gestionnaire.id }}</td>
                 <td>{{ gestionnaire.nom }}</td>
                 <td>{{ gestionnaire.prenom }}</td>
-                <td>{{ gestionnaire.motDePasse }}</td>
                 <td>
                     <a href="{{ path('gestionnaire_show', {'id': gestionnaire.id}) }}">Voir</a>
                     <a href="{{ path('gestionnaire_edit', {'id': gestionnaire.id}) }}">Modifier</a>

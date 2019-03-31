@@ -25,7 +25,7 @@ class AdminController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository(User::class)->findAll();
-        return $this->render('user/listingUsers.html.twig',[
+        return $this->render('user/index.html.twig',[
             'users' => $users
         ]);
 

@@ -29,11 +29,6 @@ class Gestionnaire
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $mot_de_passe;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Vol", mappedBy="Gestionnaire")
      */
     private $vols;
@@ -42,6 +37,11 @@ class Gestionnaire
      * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="gestionnaire", cascade={"persist", "remove"})
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
 
     public function __construct()
     {
@@ -139,6 +139,18 @@ class Gestionnaire
         if ($newGestionnaire !== $user->getGestionnaire()) {
             $user->setGestionnaire($newGestionnaire);
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -54,7 +54,7 @@ class GestionnaireController extends AbstractController
             $user = new User();
             $user->setPassword("azerty");
             $user->setUsername($gestionnaire->getNom());
-            $user->setEmail($gestionnaire)->getEmail();
+            $user->setEmail($gestionnaire->getEmail());
             $user->setGestionnaire($gestionnaire);
             $entityManager->persist($user);
             $entityManager->flush();

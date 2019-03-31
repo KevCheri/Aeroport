@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Mot_de_passe</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,19 +20,19 @@
                 <td>{{ responsable.id }}</td>
                 <td>{{ responsable.nom }}</td>
                 <td>{{ responsable.prenom }}</td>
-                <td>{{ responsable.motDePasse }}</td>
                 <td>
-                    <a href="{{ path('responsable_show', {'id': responsable.id}) }}">show</a>
-                    <a href="{{ path('responsable_edit', {'id': responsable.id}) }}">edit</a>
+                    <a href="{{ path('responsable_show', {'id': responsable.id}) }}">Voir</a>
+                    <a href="{{ path('responsable_edit', {'id': responsable.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('responsable_new') }}">Create new</a>
+    <a href="{{ path('responsable_new') }}">Créer un Responsable</a>
+    <p><a href="{{ path('admin') }}">retour</a></p>
 {% endblock %}

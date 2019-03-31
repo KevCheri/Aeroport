@@ -27,14 +27,14 @@ class Responsable
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $mot_de_passe;
-
-    /**
      * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="responsable", cascade={"persist", "remove"})
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
 
     public function getId(): ?int
     {
@@ -91,6 +91,18 @@ class Responsable
         if ($newResponsable !== $user->getResponsable()) {
             $user->setResponsable($newResponsable);
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
