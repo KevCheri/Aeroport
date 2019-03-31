@@ -47,6 +47,7 @@ class PiloteController extends AbstractController
             $user = new User();
             $user->setPassword("azerty");
             $user->setUsername($pilote->getNom());
+            $user->setRoles(["ROLE_PILOTE"]);
             $user->setEmail($pilote)->getEmail();
             $user->setPilote($pilote);
             $entityManager->persist($user);

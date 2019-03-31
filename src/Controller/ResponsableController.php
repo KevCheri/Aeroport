@@ -18,6 +18,8 @@ class ResponsableController extends AbstractController
 {
     /**
      * @Route("/", name="responsable_index", methods={"GET"})
+     * @param ResponsableRepository $responsableRepository
+     * @return Response
      */
     public function index(ResponsableRepository $responsableRepository): Response
     {
@@ -28,6 +30,8 @@ class ResponsableController extends AbstractController
 
     /**
      * @Route("/new", name="responsable_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -43,6 +47,7 @@ class ResponsableController extends AbstractController
             $user->setPassword("azerty");
             $user->setUsername($responsable->getNom());
             $user->setEmail($responsable->getEmail());
+            $user->setRoles(["ROLE_RESPONSABLE"]);
             $user->setResponsable($responsable);
             $entityManager->persist($user);
             $entityManager->flush();
@@ -58,6 +63,8 @@ class ResponsableController extends AbstractController
 
     /**
      * @Route("/{id}", name="responsable_show", methods={"GET"})
+     * @param Responsable $responsable
+     * @return Response
      */
     public function show(Responsable $responsable): Response
     {
@@ -68,6 +75,9 @@ class ResponsableController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="responsable_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Responsable $responsable
+     * @return Response
      */
     public function edit(Request $request, Responsable $responsable): Response
     {
@@ -90,6 +100,9 @@ class ResponsableController extends AbstractController
 
     /**
      * @Route("/{id}", name="responsable_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Responsable $responsable
+     * @return Response
      */
     public function delete(Request $request, Responsable $responsable): Response
     {

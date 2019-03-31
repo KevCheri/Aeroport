@@ -3,24 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="04bd10e6-30a9-42ca-b9b0-5182f700e585" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" afterPath="$PROJECT_DIR$/config/packages/security.yaml" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GestionnaireController.php" afterPath="$PROJECT_DIR$/src/Controller/GestionnaireController.php" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PiloteController.php" afterPath="$PROJECT_DIR$/src/Controller/PiloteController.php" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ResponsableController.php" afterPath="$PROJECT_DIR$/src/Controller/ResponsableController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Gestionnaire.php" afterPath="$PROJECT_DIR$/src/Entity/Gestionnaire.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Responsable.php" afterPath="$PROJECT_DIR$/src/Entity/Responsable.php" />
-      <change beforePath="$PROJECT_DIR$/src/Form/GestionnaireType.php" afterPath="$PROJECT_DIR$/src/Form/GestionnaireType.php" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ResponsableType.php" afterPath="$PROJECT_DIR$/src/Form/ResponsableType.php" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/index.html.twig" afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="$PROJECT_DIR$/templates/base.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/gestionnaire/_form.html.twig" afterPath="$PROJECT_DIR$/templates/gestionnaire/_form.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/gestionnaire/index.html.twig" afterPath="$PROJECT_DIR$/templates/gestionnaire/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/gestionnaire/show.html.twig" afterPath="$PROJECT_DIR$/templates/gestionnaire/show.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/pilote/index.html.twig" afterPath="$PROJECT_DIR$/templates/pilote/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/responsable/_form.html.twig" afterPath="$PROJECT_DIR$/templates/responsable/_form.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/responsable/index.html.twig" afterPath="$PROJECT_DIR$/templates/responsable/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/responsable/show.html.twig" afterPath="$PROJECT_DIR$/templates/responsable/show.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ResponsableController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResponsableController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ResponsableController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="44" column="53" lean-forward="false" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
+            <state relative-caret-position="287">
+              <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="50" />
               <folding>
                 <element signature="e#34#54#0#PHP" expanded="true" />
               </folding>
@@ -49,58 +34,28 @@
       <file leaf-file-name="GestionnaireController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/GestionnaireController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="931">
-              <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+            <state relative-caret-position="173">
+              <caret line="56" column="47" lean-forward="false" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/gestionnaire/index.html.twig">
+      <file leaf-file-name="PiloteController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/PiloteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+            <state relative-caret-position="298">
+              <caret line="49" column="45" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResponsableType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/ResponsableType.php">
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Responsable.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Responsable.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="26" column="20" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/responsable/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="24" column="93" lean-forward="false" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/responsable/show.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -129,8 +84,8 @@
       <file leaf-file-name="security.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+            <state relative-caret-position="361">
+              <caret line="35" column="69" lean-forward="false" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -196,18 +151,18 @@
         <option value="$PROJECT_DIR$/templates/pilote/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/responsable/_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/gestionnaire/_form.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/PiloteController.php" />
         <option value="$PROJECT_DIR$/src/Entity/Responsable.php" />
         <option value="$PROJECT_DIR$/src/Entity/Gestionnaire.php" />
         <option value="$PROJECT_DIR$/templates/gestionnaire/index.html.twig" />
         <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Security/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/ResponsableController.php" />
         <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Security/login_content.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/GestionnaireController.php" />
         <option value="$PROJECT_DIR$/templates/responsable/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/responsable/show.html.twig" />
         <option value="$PROJECT_DIR$/templates/gestionnaire/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/ResponsableController.php" />
         <option value="$PROJECT_DIR$/config/packages/security.yaml" />
+        <option value="$PROJECT_DIR$/src/Controller/GestionnaireController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/PiloteController.php" />
       </list>
     </option>
   </component>
@@ -324,7 +279,8 @@
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="14" />
     <option name="width" value="1439" />
     <option name="height" value="900" />
   </component>
@@ -605,10 +561,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60940000" />
+    <option name="totallyTimeSpent" value="61960000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1439" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1439" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24982105" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -898,14 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/pilote/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -962,16 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PiloteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#34#56#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Security/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1000,14 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/GestionnaireController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
           <folding />
         </state>
       </provider>
@@ -1070,19 +1000,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+        <state relative-caret-position="361">
+          <caret line="35" column="69" lean-forward="false" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ResponsableController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="44" column="53" lean-forward="false" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
+        <state relative-caret-position="287">
+          <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="50" />
           <folding>
             <element signature="e#34#54#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/GestionnaireController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="56" column="47" lean-forward="false" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PiloteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="49" column="45" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
