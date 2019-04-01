@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Passager;
 use App\Form\PassagerType;
 use App\Repository\PassagerRepository;
@@ -36,11 +37,21 @@ class PassagerController extends AbstractController
         $passager = new Passager();
         $form = $this->createForm(PassagerType::class, $passager);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $passager->setUser($this->getUser());
             $entityManager->persist($passager);
             $entityManager->flush();
+            $user = new User();
+            $user->setPassword("azerty");
+            $user->setUsername($passager->getNom());
+            $user->setEmail($passager->getEmail());
+            $user->setRoles(["ROLE_PASSAGER"]);
+            $user->setPassager($passager);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
 
             return $this->redirectToRoute("vol_listingvolPassager");
         }
@@ -61,6 +72,7 @@ class PassagerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($passager);
             $entityManager->flush();
+
 
             return $this->redirectToRoute('passager_index');
         }

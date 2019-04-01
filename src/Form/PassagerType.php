@@ -16,6 +16,7 @@ class PassagerType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('pays')
+            ->add('email')
             //->add('vols')
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'save'],])
