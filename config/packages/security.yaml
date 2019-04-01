@@ -31,6 +31,8 @@ security:
         - { path: ^/register, role: [ROLE_PASSAGER, ROLE_ADMIN, IS_AUTHENTICATED_ANONYMOUSLY] }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
-        - { path: ^/vol, role: [ROLE_GESTIONNAIRE, ROLE_ADMIN, ROLE_RESPONSABLE, ROLE_PASSAGER] }
+        - { path: ^/vol, role: [ROLE_GESTIONNAIRE, ROLE_ADMIN, ROLE_RESPONSABLE, ROLE_PASSAGER, ROLE_USER] }
+        - { path: ^/vol/listingvolPassager, role: ROLE_USER }
+        - {path: ^/vol/ajout, role: ROLE_GESTIONNAIRE }
         - { path: ^/gestionnaire, role: [ROLE_GESTIONNAIRE, ROLE_ADMIN] }
         - { path: ^/responsable, role: [ROLE_RESPONSABLE, ROLE_ADMIN] }

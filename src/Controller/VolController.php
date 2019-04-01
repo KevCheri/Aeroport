@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Passager;
 use App\Entity\Pilote;
 use App\Entity\Avion;
@@ -32,18 +33,26 @@ class VolController extends AbstractController
             'vols' => $volRepository->findAll(),
         ]);
     }
+    /**
+     * Cette fonction nous permet d'afficher la liste des vols que
+     * le gestionnaire à pu créer, qui sont réservable.
+     */
 
     /**
      * @Route("/indexPassager", name="vol_indexpassager", methods={"GET"})
      * @param VolRepository $volRepository
      * @return Response
      */
-    public function indexpPassager(VolRepository $volRepository): Response
+    public function indexPassager(VolRepository $volRepository): Response
     {
         return $this->render('vol/indexPassager.html.twig', [
             'vols' => $volRepository->findAll(),
         ]);
     }
+
+    /**
+     *Cette fonction affecte le passager à un vol tout en lui affichant un message de confirmation de Vol
+     */
 
     /**
      * @Route("/indexPassagerConfirm/{id}", name="vol_indexPassagerConfirm", methods={"GET"})
@@ -54,7 +63,7 @@ class VolController extends AbstractController
      */
     public function affectationPassager(Vol $vol, PassagerRepository $passagerRepository, VolRepository $volRepository): Response
     {
-        $passager = $passagerRepository->find(1);
+        $passager = $passagerRepository->find($this->getUser()->getPassager()->getId());
         $entityManager = $this->getDoctrine()->getManager();
         $vol->addPassager($passager);
         $entityManager->persist($vol);
@@ -63,6 +72,9 @@ class VolController extends AbstractController
             'vols' => $volRepository->findAll(),
         ]);
     }
+    /**
+     * Cette fonction affiche tous les vols du passager
+     */
 
     /**
      * @Route("/listingvolPassager", name="vol_listingvolPassager", methods={"GET"})
@@ -71,12 +83,16 @@ class VolController extends AbstractController
     public function listingvolPassager():Response
     {
         $em = $this->getDoctrine()->getManager();
-        $passager = $em->getRepository(Passager::class)->find(1);
+        $passager = $em->getRepository(Passager::class)->find($this->getUser()->getPassager()->getId());
         return $this->render('vol/listingvolPassager.html.twig',[
             'passager' => $passager
         ]);
 
     }
+
+    /**
+     * Cette fonction affiche tous les vols d'un pilote
+     */
 
     /**
      * @Route("/listingvolPilote", name="vol_listingvolPilote", methods={"GET"})
@@ -92,6 +108,11 @@ class VolController extends AbstractController
     }
 
     /**
+     * Cette fonction affiche tous les vols de départ, pour un responsable, pour avoir un oeil sur
+     * son Aéroport.
+     */
+
+    /**
      * @Route("/listingvoldepartResponsable", name="vol_listingvoldepartResponsable", methods={"GET"})
      * @return Response
      */
@@ -105,6 +126,10 @@ class VolController extends AbstractController
     }
 
     /**
+     * Cette fonction affiche tous les Avions pour le responsable
+     */
+
+    /**
      * @Route("/listingvolAvion", name="vol_listingvolAvion", methods={"GET"})
      * @return Response
      */
@@ -116,7 +141,9 @@ class VolController extends AbstractController
             'avions' => $avions
         ]);
     }
-
+    /**
+     * Cette fonction affiche tous les vols par avion, pour le responsable
+     */
     /**
      * @Route("/listingVolparavion", name="vol_listingVolparavion", methods={"GET"})
      * @return Response
@@ -130,7 +157,9 @@ class VolController extends AbstractController
         ]);
     }
 
-
+    /**
+     * Cette fonction permet la création d'un nouveau vol, pour le gestionnaire.
+     */
     /**
      * @Route("/ajout", name="vol_new", methods={"GET","POST"})
      * @param Request $request
@@ -168,6 +197,9 @@ class VolController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="vol_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Vol $vol
+     * @return Response
      */
     public function edit(Request $request, Vol $vol): Response
     {
@@ -190,6 +222,9 @@ class VolController extends AbstractController
 
     /**
      * @Route("/{id}", name="vol_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Vol $vol
+     * @return Response
      */
     public function delete(Request $request, Vol $vol): Response
     {

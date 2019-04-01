@@ -43,26 +43,34 @@ class PassagerController extends AbstractController
             $passager->setUser($this->getUser());
             $entityManager->persist($passager);
             $entityManager->flush();
-            $user = new User();
+            $user = $this->getUser();
+            $user->setRoles(["ROLE_PASSAGER"]);
+            $entityManager->persist($user);
+            $entityManager->flush();
+            /**$user = new User();
             $user->setPassword("azerty");
             $user->setUsername($passager->getNom());
-            $user->setEmail($passager->getEmail());
+            //$user->setEmail($passager->getEmail());
+            $user->setEmail("popop");
             $user->setRoles(["ROLE_PASSAGER"]);
             $user->setPassager($passager);
             $entityManager->persist($user);
-            $entityManager->flush();
+            $entityManager->flush();*/
 
 
-            return $this->redirectToRoute("vol_listingvolPassager");
+            return $this->redirectToRoute("vol_indexpassager");
         }
         return $this->render('passager/registerinfosPassager.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/new", name="passager_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
-    public function new(Request $request): Response
+    /**public function new(Request $request): Response
     {
         $passager = new Passager();
         $form = $this->createForm(PassagerType::class, $passager);
@@ -72,16 +80,24 @@ class PassagerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($passager);
             $entityManager->flush();
+            $user = new User();
+            $user->setPassword("root");
+            $user->setUsername($passager->getNom());
+            $user->setEmail($passager->getEmail());
+            $user->setRoles(["ROLE_PASSAGER"]);
+            $user->setPassager($passager);
+            $entityManager->persist($user);
+            $entityManager->flush();
 
 
-            return $this->redirectToRoute('passager_index');
+            return $this->redirectToRoute('vol_listingvolPassager');
         }
 
-        return $this->render('passager/new.html.twig', [
+        return $this->render('passager/registerinfosPassager.html.twigg', [
             'passager' => $passager,
             'form' => $form->createView(),
         ]);
-    }
+    }*/
 
     /**
      * @Route("/{id}", name="passager_show", methods={"GET"})

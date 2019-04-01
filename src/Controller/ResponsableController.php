@@ -44,7 +44,17 @@ class ResponsableController extends AbstractController
             $entityManager->persist($responsable);
             $entityManager->flush();
             $user = new User();
-            $user->setPassword("azerty");
+            /**
+             * A partir d'ici, nous allons encodé le mot de passe pour pouvoir le réutilisé.
+             */
+            /**
+            $userManager = $this->get('fos_user.user_manager');
+            //$user = $userManager->createUser();
+            $user->setPlainPassword('azerty');
+            $userManager->updateUser($user);
+             *  */
+
+            //$user->setPassword("");
             $user->setUsername($responsable->getNom());
             $user->setEmail($responsable->getEmail());
             $user->setRoles(["ROLE_RESPONSABLE"]);

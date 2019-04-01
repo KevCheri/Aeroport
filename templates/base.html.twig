@@ -19,7 +19,7 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="vol/listingvolPassager.html.twig">Mes vols</a>
+                    <a class="nav-link" href="{{ path('vol_listingvolPassager') }}" > Mes vols</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" >Profile</a>
@@ -29,7 +29,7 @@
                         Réservation
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Reserver un vol</a>
+                        <a class="dropdown-item" href="{{ path('vol_indexpassager') }}" > Reserver un vol</a>
                     </div>
                 </li>
             </ul>
