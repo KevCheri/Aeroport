@@ -10,12 +10,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/responsable")
  */
 class ResponsableController extends AbstractController
 {
+
     /**
      * @Route("/", name="responsable_index", methods={"GET"})
      * @param ResponsableRepository $responsableRepository
@@ -31,29 +34,27 @@ class ResponsableController extends AbstractController
     /**
      * @Route("/new", name="responsable_new", methods={"GET","POST"})
      * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
+
         $responsable = new Responsable();
         $form = $this->createForm(ResponsableType::class, $responsable);
         $form->handleRequest($request);
 
+        /**
+         * A partir d'ici, nous allons encodé le mot de passe pour pouvoir le réutilisé.
+         */
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = new User();
             $entityManager = $this->getDoctrine()->getManager();
+            $hash_password = $encoder->encodePassword($user, 'azerty');
+            $user->setPassword($hash_password);
             $entityManager->persist($responsable);
             $entityManager->flush();
-            $user = new User();
-            /**
-             * A partir d'ici, nous allons encodé le mot de passe pour pouvoir le réutilisé.
-             */
-            /**
-            $userManager = $this->get('fos_user.user_manager');
-            //$user = $userManager->createUser();
-            $user->setPlainPassword('azerty');
-            $userManager->updateUser($user);
-             *  */
-
             //$user->setPassword("");
             $user->setUsername($responsable->getNom());
             $user->setEmail($responsable->getEmail());
