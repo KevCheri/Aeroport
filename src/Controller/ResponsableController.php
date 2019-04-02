@@ -44,6 +44,10 @@ class ResponsableController extends AbstractController
     }
 
     /**
+     * Cette fonction nous permet de créer un nouveau responsable
+     */
+
+    /**
      * @Route("/new", name="responsable_new", methods={"GET","POST"})
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
@@ -63,6 +67,10 @@ class ResponsableController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = new User();
             $entityManager = $this->getDoctrine()->getManager();
+            /**
+             * Ici nous envoyons un password à la dur lors de la création du responsable, car en continuant le projet
+             * un mail serait envoyé aux employés pour pouvoir changer leurs password.
+             */
             $hash_password = $encoder->encodePassword($user, 'azerty');
             $user->setPassword($hash_password);
             $entityManager->persist($responsable);

@@ -17,6 +17,7 @@
             </tr>
         </thead>
         <tbody>
+        {% set showVol = 'yes' %}
         {% for vol in vols %}
             <tr>
                 <td>{{ vol.id }}</td>
@@ -24,9 +25,25 @@
                 <td>{{ vol.DateArrivee ? vol.DateArrivee|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ vol.VilleDepart }}</td>
                 <td>{{ vol.VilleArrivee }}</td>
-                <td>
-                    <a class ="btn btn-primary btn-xs" href="{{ path('vol_indexPassagerConfirm', {id: vol.id}) }}">Reserver </a>
-                </td>
+
+                <!---Ici nous récupérons tous les vols qui se trouve en base de données, on compare
+                chaque vol en base de donnée qu'à déjà réserver le client, si on voit que le client
+                à prit un vol durant la même plage horaire, alors on lui affiche un message personnalisé.-->
+                {% if passagerVols is not empty %}
+                {% for passagerVol in passagerVols %}
+                    {% if vol.DateDepart <= passagerVol.DateArrivee and vol.DateArrivee >= passagerVol.DateArrivee%}
+                        {% set showVol = 'no' %}
+                    {% endif %}
+                    {% if showVol == 'no' %}
+                        Attention, nous avons détecté un conflit au niveau des horaires de vol !
+                    {% elseif showVol != 'no'%}
+                        <a class ="btn btn-primary btn-xs" href="{{ path('vol_indexPassagerConfirm', {id: vol.id}) }}">Reserver </a>
+                    {% endif %}
+                {% endfor %}
+                    {% else %}
+                        <a class ="btn btn-primary btn-xs" href="{{ path('vol_indexPassagerConfirm', {id: vol.id}) }}">Reserver </a>
+                    {% endif %}
+                {% endfor %}
             </tr>
         {% else %}
             <tr>

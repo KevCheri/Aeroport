@@ -45,8 +45,10 @@ class VolController extends AbstractController
      */
     public function indexPassager(VolRepository $volRepository): Response
     {
+        $passager = $this->getUser()->getPassager();
         return $this->render('vol/indexPassager.html.twig', [
             'vols' => $volRepository->findAll(),
+            'passagerVols' => $passager->getVols()
         ]);
     }
 

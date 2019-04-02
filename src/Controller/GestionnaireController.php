@@ -50,6 +50,10 @@ class GestionnaireController extends AbstractController
     }
 
     /**
+     * Fonction qui nous créée un nouveau gestionnaire tout en créant un utilisateurs pour celui-ci
+     */
+
+    /**
      * @Route("/new", name="gestionnaire_new", methods={"GET","POST"})
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
@@ -64,6 +68,10 @@ class GestionnaireController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = new User();
             $entityManager = $this->getDoctrine()->getManager();
+            /**
+             * Ici nous envoyant un password à la dur lors de la création du responsable, car en continuant le projet
+             * un mail serait envoyé au employé pour pouvoir changer leurs mdp.
+             */
             $hash_password = $encoder->encodePassword($user, 'azerty');
             $user->setPassword($hash_password);
             $entityManager->persist($gestionnaire);
@@ -85,6 +93,10 @@ class GestionnaireController extends AbstractController
     }
 
     /**
+     * Fonction pour montrer un gestionnaire selectionner
+     */
+
+    /**
      * @Route("/{id}", name="gestionnaire_show", methods={"GET"})
      * @param Gestionnaire $gestionnaire
      * @return Response
@@ -95,6 +107,10 @@ class GestionnaireController extends AbstractController
             'gestionnaire' => $gestionnaire,
         ]);
     }
+
+    /**
+     * Fonction qui permet de modifier les données d'un gestionnaire
+     */
 
     /**
      * @Route("/{id}/edit", name="gestionnaire_edit", methods={"GET","POST"})
@@ -120,6 +136,10 @@ class GestionnaireController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * Cette fonction permet de supprimer un gestionnaire
+     */
 
     /**
      * @Route("/{id}", name="gestionnaire_delete", methods={"DELETE"})

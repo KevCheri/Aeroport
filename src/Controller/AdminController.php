@@ -17,6 +17,9 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
+    /**
+     * Fonction qui a été créer pour pouvoir lister les Utilisateurs
+     */
 
     /**
      * @Route("/listingUsers", name="vol_listingUsers", methods={"GET"})

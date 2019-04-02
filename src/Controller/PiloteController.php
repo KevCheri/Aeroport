@@ -57,6 +57,10 @@ class PiloteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = new User();
             $entityManager = $this->getDoctrine()->getManager();
+            /**
+             * Ici nous envoyant un password à la dur lors de la création du responsable, car en continuant le projet
+             * un mail serait envoyé au employé pour pouvoir changer leurs mdp.
+             */
             $hash_password = $encoder->encodePassword($user, 'azerty');
             $user->setPassword($hash_password);
             $entityManager->persist($pilote);
