@@ -2,11 +2,13 @@
 {% block body %}
 <div class="container">
     {% for vol in passager.vols %}
+        <div>
         <p>
             {{ vol.villeArrivee }}
         </p>
-        <a href= "{{ path('office_passager') }}">Retour</a>
+        </div>
     {% endfor %}
+    <a href= "{{ path('office_passager') }}">Retour</a>
 </div>
  {% endblock %}
 
