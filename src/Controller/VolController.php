@@ -96,12 +96,13 @@ class VolController extends AbstractController
 
     /**
      * @Route("/listingvolPilote", name="vol_listingvolPilote", methods={"GET"})
+     * @param $id
      * @return Response
      */
-    public function listingvolPilote():Response
+    public function listingvolPilote($id):Response
     {
         $em = $this->getDoctrine()->getManager();
-        $pilote = $em->getRepository(Pilote::class)->find(1);
+        $pilote = $em->getRepository(Pilote::class)->find($id);
         return $this->render('vol/listingvolPilote.html.twig',[
             'pilote' => $pilote
         ]);
@@ -159,6 +160,7 @@ class VolController extends AbstractController
 
     /**
      * Cette fonction permet la création d'un nouveau vol, pour le gestionnaire.
+     * Le pilote et l'avion sont affecté en même temps
      */
     /**
      * @Route("/ajout", name="vol_new", methods={"GET","POST"})
@@ -187,6 +189,8 @@ class VolController extends AbstractController
 
     /**
      * @Route("/{id}", name="vol_show", methods={"GET"})
+     * @param Vol $vol
+     * @return Response
      */
     public function show(Vol $vol): Response
     {

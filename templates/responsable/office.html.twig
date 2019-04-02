@@ -1,0 +1,16 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <p><a class ="btn btn-primary btn-xs" href="{{ path('vol_listingvoldepartResponsable') }}">Montrer les Départs</a></p>
+        <p><a class ="btn btn-primary btn-xs" href="{{ path('vol_listingvolAvion') }}">Montrer les Avions</a></p>
+        <p><a class ="btn btn-primary btn-xs" href="{{ path('listingVolparavion') }}">Montrer les vols par avion</a></p>
+        <p><a class ="btn btn-primary btn-xs" href="{{ path('vol_listingvolPilote') }}">Vol des pilotes</a></p>
+
+    </div>
+
+{% endblock %}

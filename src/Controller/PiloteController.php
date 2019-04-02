@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/pilote")
@@ -29,23 +30,37 @@ class PiloteController extends AbstractController
     }
 
     /**
+     * @Route("/office", name="office_pilote", methods={"GET","POST"})
+     */
+
+    public function officePilote()
+    {
+
+        return $this->render('pilote/office.html.twig', [
+            'controller_name' => 'PiloteController']);
+
+    }
+
+    /**
      * @Route("/new", name="pilote_new", methods={"GET","POST"})
      * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
 
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $pilote = new Pilote();
         $form = $this->createForm(PiloteType::class, $pilote);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = new User();
             $entityManager = $this->getDoctrine()->getManager();
+            $hash_password = $encoder->encodePassword($user, 'azerty');
+            $user->setPassword($hash_password);
             $entityManager->persist($pilote);
             $entityManager->flush();
-            $user = new User();
-            $user->setPassword("root");
             $user->setUsername($pilote->getNom());
             $user->setRoles(["ROLE_PILOTE"]);
             $user->setEmail($pilote->getEmail());

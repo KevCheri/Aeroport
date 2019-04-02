@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/passager")
@@ -18,6 +19,8 @@ class PassagerController extends AbstractController
 {
     /**
      * @Route("/", name="passager_index", methods={"GET"})
+     * @param PassagerRepository $passagerRepository
+     * @return Response
      */
     public function index(PassagerRepository $passagerRepository): Response
     {
@@ -27,35 +30,44 @@ class PassagerController extends AbstractController
     }
 
     /**
+     * @Route("/office", name="office_passager", methods={"GET","POST"})
+     */
+
+    public function officePassager()
+    {
+
+        return $this->render('passager/office.html.twig', [
+            'controller_name' => 'PassagerController']);
+
+    }
+
+    /**
      * @Route("/registerinfosPassager", name="registerinfosPassager", methods={"GET", "POST"})
      * @param PassagerRepository $passagerRepository
      * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
-    public function registerinfosPassager(PassagerRepository $passagerRepository, Request $request)
+    public function registerinfosPassager(PassagerRepository $passagerRepository, Request $request, UserPasswordEncoderInterface $encoder):Response
     {
         $passager = new Passager();
         $form = $this->createForm(PassagerType::class, $passager);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // $user = new User();
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
             $entityManager = $this->getDoctrine()->getManager();
-            $passager->setUser($this->getUser());
+
+            $passager->setEmail($user->getEmail());
             $entityManager->persist($passager);
             $entityManager->flush();
-            $user = $this->getUser();
-            $user->setRoles(["ROLE_PASSAGER"]);
-            $entityManager->persist($user);
-            $entityManager->flush();
-            /**$user = new User();
-            $user->setPassword("azerty");
-            $user->setUsername($passager->getNom());
-            //$user->setEmail($passager->getEmail());
-            $user->setEmail("popop");
+
             $user->setRoles(["ROLE_PASSAGER"]);
             $user->setPassager($passager);
             $entityManager->persist($user);
-            $entityManager->flush();*/
+            $entityManager->flush();
 
 
             return $this->redirectToRoute("vol_indexpassager");

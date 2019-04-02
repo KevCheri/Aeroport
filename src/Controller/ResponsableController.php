@@ -32,6 +32,18 @@ class ResponsableController extends AbstractController
     }
 
     /**
+     * @Route("/office", name="office_responsable", methods={"GET","POST"})
+     */
+
+    public function officeResponsable()
+    {
+
+        return $this->render('responsable/office.html.twig', [
+            'controller_name' => 'ResponsableController']);
+
+    }
+
+    /**
      * @Route("/new", name="responsable_new", methods={"GET","POST"})
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
@@ -55,7 +67,6 @@ class ResponsableController extends AbstractController
             $user->setPassword($hash_password);
             $entityManager->persist($responsable);
             $entityManager->flush();
-            //$user->setPassword("");
             $user->setUsername($responsable->getNom());
             $user->setEmail($responsable->getEmail());
             $user->setRoles(["ROLE_RESPONSABLE"]);

@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/gestionnaire")
@@ -31,7 +32,19 @@ class GestionnaireController extends AbstractController
     public function newVol()
     {
 
-        $this->render('gestionnaire/vol.html.twig', [
+        return $this->render('gestionnaire/vol.html.twig', [
+            'controller_name' => 'GestionnaireController']);
+
+    }
+
+    /**
+     * @Route("/office", name="office_gestionnaire", methods={"GET","POST"})
+     */
+
+    public function officeGestionnaire()
+    {
+
+        return $this->render('gestionnaire/office.html.twig', [
             'controller_name' => 'GestionnaireController']);
 
     }
@@ -39,20 +52,22 @@ class GestionnaireController extends AbstractController
     /**
      * @Route("/new", name="gestionnaire_new", methods={"GET","POST"})
      * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $gestionnaire = new Gestionnaire();
         $form = $this->createForm(GestionnaireType::class, $gestionnaire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = new User();
             $entityManager = $this->getDoctrine()->getManager();
+            $hash_password = $encoder->encodePassword($user, 'azerty');
+            $user->setPassword($hash_password);
             $entityManager->persist($gestionnaire);
             $entityManager->flush();
-            $user = new User();
-            $user->setPassword("azerty");
             $user->setUsername($gestionnaire->getNom());
             $user->setRoles(["ROLE_GESTIONNAIRE"]);
             $user->setEmail($gestionnaire->getEmail());
