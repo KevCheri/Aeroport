@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04bd10e6-30a9-42ca-b9b0-5182f700e585" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/README.txt" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/VolController.php" afterPath="$PROJECT_DIR$/src/Controller/VolController.php" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="$PROJECT_DIR$/templates/base.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/responsable/office.html.twig" afterPath="$PROJECT_DIR$/templates/responsable/office.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/user/listingUsers.html.twig" afterPath="$PROJECT_DIR$/templates/user/listingUsers.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/vol/indexPassager.html.twig" afterPath="$PROJECT_DIR$/templates/vol/indexPassager.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/vol/listingVolparavion.html.twig" afterPath="$PROJECT_DIR$/templates/vol/listingVolparavion.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/vol/listingvolAvion.html.twig" afterPath="$PROJECT_DIR$/templates/vol/listingvolAvion.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/vol/listingvolPilote.html.twig" afterPath="$PROJECT_DIR$/templates/vol/listingvolPilote.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/vol/listingvoldepartResponsable.html.twig" afterPath="$PROJECT_DIR$/templates/vol/listingvoldepartResponsable.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,20 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="266">
               <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1583">
+            <state relative-caret-position="1526">
               <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
               <folding />
             </state>
@@ -70,7 +59,7 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/user/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="92">
               <caret line="7" column="56" lean-forward="false" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
               <folding />
             </state>
@@ -113,6 +102,9 @@
       <find>indexPass</find>
       <find>datat</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -291,6 +283,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="182" />
     <option name="width" value="1439" />
     <option name="height" value="900" />
   </component>
@@ -411,10 +404,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110778000" />
+    <option name="totallyTimeSpent" value="111242000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1439" height="900" extended-state="0" />
+    <frame x="0" y="182" width="1439" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24982105" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -834,14 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1583">
-          <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-919">
@@ -866,18 +851,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/user/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="92">
           <caret line="7" column="56" lean-forward="false" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/README.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+        <state relative-caret-position="1526">
+          <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
           <folding />
         </state>
       </provider>
