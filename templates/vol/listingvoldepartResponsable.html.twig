@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
+
+{% block body %}
 {% for vol in vols %}
     {{ vol.villeDepart }}
-{% endfor %}
 
+{% endfor %}
+{% endblock %}

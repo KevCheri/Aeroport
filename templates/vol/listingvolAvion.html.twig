@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
+{% block body %}
 {% for avion in avions %}
     {{ avion.modele }}
     <a class ="btn btn-primary btn-xs" href="{{ path('vol_listingVolparavion', {avion: avion.id}) }}">Voir tous les vols </a>
 {% endfor %}
+{% endblock %}

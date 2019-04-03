@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{% block body %}
 {% for vol in pilote.vols %}
     {{ vol.villeArrivee }}
 {% endfor %}
+{% endblock %}

@@ -1,4 +1,10 @@
 {% include 'base.html.twig' %}
-{% for user in users %}
-    {{ user.username }}
-{% endfor %}
+
+{% block title %}Liste des Utilisateurs{% endblock %}
+
+{% block body %}
+    {% for user in users %}
+        {{ user.username }}
+    {% endfor %}
+
+{% endblock %}

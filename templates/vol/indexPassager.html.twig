@@ -5,8 +5,8 @@
 {% block body %}
     <h1>Vol index</h1>
     <div class="table-responsive">
-    <table>
-        <thead>
+        <table>
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>DateDepart</th>
@@ -15,42 +15,59 @@
                 <th>VilleArrivee</th>
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% set showVol = 'yes' %}
-        {% for vol in vols %}
-            <tr>
-                <td>{{ vol.id }}</td>
-                <td>{{ vol.DateDepart ? vol.DateDepart|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ vol.DateArrivee ? vol.DateArrivee|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ vol.VilleDepart }}</td>
-                <td>{{ vol.VilleArrivee }}</td>
+            </thead>
+            <tbody>
+            {% set showVol = 'yes' %}
+            {% set horaireConflit = 'no' %}
+            {% set capaciteAtteint = 'no' %}
+            {% for vol in vols %}
+                <tr>
+                    <td>{{ vol.id }}</td>
+                    <td>{{ vol.DateDepart ? vol.DateDepart|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ vol.DateArrivee ? vol.DateArrivee|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ vol.VilleDepart }}</td>
+                    <td>{{ vol.VilleArrivee }}</td>
+                    <td>
+                        <!---Ici nous récupérons tous les vols qui se trouve en base de données, on compare
+               chaque vol en base de donnée qu'à déjà réserver le client, si on voit que le client
+               à prit un vol durant la même plage horaire, alors on lui affiche un message personnalisé. On compare
+               également le nombre de passager à la capacité totale d'un avion.-->
 
-                <!---Ici nous récupérons tous les vols qui se trouve en base de données, on compare
-                chaque vol en base de donnée qu'à déjà réserver le client, si on voit que le client
-                à prit un vol durant la même plage horaire, alors on lui affiche un message personnalisé.-->
-                {% if passagerVols is not empty %}
-                {% for passagerVol in passagerVols %}
-                    {% if vol.DateDepart <= passagerVol.DateArrivee and vol.DateArrivee >= passagerVol.DateArrivee%}
-                        {% set showVol = 'no' %}
-                    {% endif %}
-                    {% if showVol == 'no' %}
-                        Attention, nous avons détecté un conflit au niveau des horaires de vol !
-                    {% elseif showVol != 'no'%}
-                        <a class ="btn btn-primary btn-xs" href="{{ path('vol_indexPassagerConfirm', {id: vol.id}) }}">Reserver </a>
-                    {% endif %}
-                {% endfor %}
-                    {% else %}
-                        <a class ="btn btn-primary btn-xs" href="{{ path('vol_indexPassagerConfirm', {id: vol.id}) }}">Reserver </a>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Aucun enregistrement trouvé</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                        {% if passagerVols is not empty %}
+                            {% for passagerVol in passagerVols %}
+                                {% if vol.DateDepart <= passagerVol.DateArrivee and vol.DateArrivee >= passagerVol.DateDepart %}
+                                    {% set horaireConflit = 'yes' %}
+                                    {% set showVol = 'no' %}
+                                {% endif %}
+                                {% if vol.passagers|length >= vol.avion.capacite %}
+                                    {% set capaciteAtteint = 'yes' %}
+                                    {% set showVol = 'no' %}
+                                {% endif %}
+
+                                {% if horaireConflit == 'yes' %}
+                                    Conflit horaire avec un autre vol
+                                {% elseif capaciteAtteint == 'yes' %}
+                                    La capacité de ce vol est atteinte
+                                {% elseif showVol != 'no'%}
+                                    <a class ="btn btn-primary btn-xs" href="{{ path('vol_indexPassagerConfirm', {id: vol.id}) }}">Reserver </a>
+                                {% endif %}
+
+                            {% endfor %}
+                        {% elseif vol.passagers|length >= vol.avion.capacite %}
+                            La capacité de ce vol est atteinte
+                        {% else %}
+                            <a class ="btn btn-primary btn-xs" href="{{ path('vol_indexPassagerConfirm', {id: vol.id}) }}">Reserver </a>
+                        {% endif %}
+                        {% set showVol = 'yes' %}
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

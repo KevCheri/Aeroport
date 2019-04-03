@@ -98,13 +98,12 @@ class VolController extends AbstractController
 
     /**
      * @Route("/listingvolPilote", name="vol_listingvolPilote", methods={"GET"})
-     * @param $id
      * @return Response
      */
-    public function listingvolPilote($id):Response
+    public function listingvolPilote():Response
     {
         $em = $this->getDoctrine()->getManager();
-        $pilote = $em->getRepository(Pilote::class)->find($id);
+        $pilote = $em->getRepository(Pilote::class)->find($this->getUser()->getPilote()->getId());
         return $this->render('vol/listingvolPilote.html.twig',[
             'pilote' => $pilote
         ]);
